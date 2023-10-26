@@ -1,4 +1,5 @@
 import { useState } from "react";
+import profileImage from '../../assets/user.png'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -48,7 +49,12 @@ function SidebarComponent() {
           {/* Logo and Menu Icon */}
           <MenuItem>
             {!isCollapsed && (
-              <Box>
+              <Box 
+              display="flex" 
+              justifyContent="space-between"
+              alignItems="center"
+              ml="15px"
+              >
                 <Typography variant="h3" color={colors.grey[100]}>
                   admins
                 </Typography>
@@ -67,7 +73,7 @@ function SidebarComponent() {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
+                  src={profileImage}
                   style={{cursor: "pointer", borderRadius: "50%"}}
                 />
               </Box>
@@ -82,6 +88,11 @@ function SidebarComponent() {
               </Box>
             </Box>
           )}
+
+          {/* Menu Items */}
+          <Box paddingLeft={isCollapsed? "undefined": "10%"}>
+
+          </Box>
         </Menu>
       </Sidebar>
 
