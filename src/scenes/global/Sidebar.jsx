@@ -22,7 +22,23 @@ function SidebarComponent() {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setIsSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("Dashboard");
+
+  const Item = ({title, to, icon, selected, setSelected}) => {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode)
+    return (
+      <MenuItem 
+      active={selected === title} 
+      style={{color: colors.grey[100]}} 
+      onClick={() => setIsSelected(title)}
+      icon={icon}
+      > 
+        <Typography>{title}</Typography>
+        < Link to={to}/>
+      </MenuItem>
+    )
+  }
 
   return (
     <Box
@@ -91,7 +107,13 @@ function SidebarComponent() {
 
           {/* Menu Items */}
           <Box paddingLeft={isCollapsed? "undefined": "10%"}>
-
+            <Item 
+            title="Dashboard" 
+            to='/' 
+            icon={<HomeOutlinedIcon/>}
+            selected={selected}
+            setSelected={setSelected}
+            />
           </Box>
         </Menu>
       </Sidebar>
